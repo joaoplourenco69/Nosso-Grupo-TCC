@@ -1,6 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+<<<<<<< HEAD
 import { COLORS } from '../constants/colors';
+=======
+import { COLORS } from '../constants/theme';
+>>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378
 import { Header } from '../components/Header';
 
 export const OpcoesScreen = ({ navigation }) => {

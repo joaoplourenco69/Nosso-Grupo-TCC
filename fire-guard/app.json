@@ -32,8 +32,12 @@
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 76
         }
+<<<<<<< HEAD
       ],
       "expo-image"
+=======
+      ]
+>>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378
     ],
     "experiments": {
       "typedRoutes": true,

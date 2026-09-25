@@ -9,7 +9,11 @@ import {
   Alert
 } from 'react-native';
 import { Image } from 'expo-image';
+<<<<<<< HEAD
 import { COLORS } from '../constants/colors';
+=======
+import { COLORS } from '../constants/theme';
+>>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378
 import { Header } from '../components/Header';
 import { supabase } from '../services/supabase';
 

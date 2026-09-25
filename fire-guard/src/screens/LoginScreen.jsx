@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert, ActivityIndicator } from 'react-native';
+<<<<<<< HEAD
 import { COLORS } from '../constants/colors';
 import { Header } from '../components/Header';
 import { signInWithEmail } from '../services/auth';
@@ -11,6 +12,18 @@ export const LoginScreen = ({ navigation }) => {
 
   const handleLogin = async () => {
     if (!email || !senha) {
+=======
+import { COLORS } from '../constants/theme';
+import { Header } from '../components/Header';
+
+export const LoginScreen = ({ navigation }) => {
+    const [usuario, setUsuario] = useState('');
+    const [senha, setSenha] = useState('');
+    const [loading, setLoading] = useState(false);
+
+  const handleLogin = async () => {
+    if (!usuario || !senha) {
+>>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378
       Alert.alert('Erro', 'Por favor, preencha todos os campos.');
       return;
     }
@@ -18,6 +31,7 @@ export const LoginScreen = ({ navigation }) => {
     setLoading(true);
 
     try {
+<<<<<<< HEAD
       const { profile } = await signInWithEmail(email, senha);
 
       if (!profile) {
@@ -31,6 +45,13 @@ export const LoginScreen = ({ navigation }) => {
       });
     } catch (error) {
       Alert.alert('Falha no login', error.message || 'E-mail ou senha invalidos.');
+=======
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      Alert.alert('Sucesso', 'Login realizado com sucesso!');
+      // navigation.navigate('Opcoes');
+    } catch (error) {
+      Alert.alert('Falha', 'Usuário ou senha inválidos.');
+>>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378
     } finally {
       setLoading(false);
     }
@@ -39,12 +60,17 @@ export const LoginScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Header />
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378
       <View style={styles.content}>
         <Text style={styles.welcomeText}>Login do Sistema</Text>
         <Text style={styles.instructionText}>Insira suas credenciais abaixo.</Text>
 
         <View style={styles.inputContainer}>
+<<<<<<< HEAD
           <Text style={styles.label}>E-MAIL</Text>
           <TextInput
             style={styles.input}
@@ -53,6 +79,15 @@ export const LoginScreen = ({ navigation }) => {
             onChangeText={setEmail}
             autoCapitalize="none"
             keyboardType="email-address"
+=======
+          <Text style={styles.label}>USUÁRIO</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Digite seu usuário"
+            value={usuario}
+            onChangeText={setUsuario}
+            autoCapitalize="none"
+>>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378
           />
         </View>
 
@@ -63,7 +98,11 @@ export const LoginScreen = ({ navigation }) => {
             placeholder="Digite sua senha"
             value={senha}
             onChangeText={setSenha}
+<<<<<<< HEAD
             secureTextEntry
+=======
+            secureTextEntry={true}
+>>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378
           />
         </View>
 
@@ -71,7 +110,15 @@ export const LoginScreen = ({ navigation }) => {
           <Text style={styles.forgotPasswordText}>Esqueci minha senha</Text>
         </TouchableOpacity>
 
+<<<<<<< HEAD
         <TouchableOpacity style={styles.button} onPress={handleLogin} disabled={loading}>
+=======
+        <TouchableOpacity 
+          style={styles.button}
+          onPress={handleLogin}
+          disabled={loading}
+        >
+>>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378
           {loading ? (
             <ActivityIndicator size="small" color={COLORS.white} />
           ) : (
@@ -153,4 +200,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378

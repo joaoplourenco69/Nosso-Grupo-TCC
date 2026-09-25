@@ -9,7 +9,11 @@ import {
   Dimensions 
 } from 'react-native';
 import { Image } from 'expo-image';
+<<<<<<< HEAD
 import { COLORS } from '../constants/colors';
+=======
+import { COLORS } from '../constants/theme';
+>>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378
 import { Header } from '../components/Header';
 
 const { width } = Dimensions.get('window');
@@ -17,9 +21,15 @@ const CAROUSEL_WIDTH = width - 40; // Largura ajustada com a margem da tela
 
 // Lista de imagens para o carrossel (ajuste os caminhos conforme seus arquivos em assets/images/)
 const SLIDES = [
+<<<<<<< HEAD
   { id: '1', image: require('../../assets/images/forest.png'), title: 'Monitoramento Florestal' },
   { id: '2', image: require('../../assets/images/forest.png'), title: 'Detecção por Câmeras' },
   { id: '3', image: require('../../assets/images/forest.png'), title: 'Ação Rápida de Combate' },
+=======
+  { id: '1', image: require('../../assets/images/carrosel1.jpg'), title: 'floresta 1 legalzinha' },
+  { id: '2', image: require('../../assets/images/carrosel2.jpg'), title: 'floresta 2 lindinha ' },
+  { id: '3', image: require('../../assets/images/carrosel3.jpg'), title: 'floresta 3' },
+>>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378
 ];
 
 export const LandingScreen = ({ navigation }) => {

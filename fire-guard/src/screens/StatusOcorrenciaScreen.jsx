@@ -9,12 +9,20 @@ import {
   ActivityIndicator
 } from 'react-native';
 import { Image } from 'expo-image';
+<<<<<<< HEAD
 import { COLORS } from '../constants/colors';
+=======
+import { COLORS } from '../constants/theme';
+>>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378
 import { Header } from '../components/Header';
 import { api } from '../services/api';
 
 // Imagem padrão de incêndio para testes se a foto não vier do backend
+<<<<<<< HEAD
 const DEFAULT_FIRE_IMG = require('../../assets/images/forest.png');
+=======
+const DEFAULT_FIRE_IMG = require('../../assets/images/fireTop.png');
+>>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378
 
 export const StatusOcorrenciaScreen = ({ route }) => {
   // Pega os dados enviados pela tela de ListaAlertas
@@ -64,7 +72,11 @@ export const StatusOcorrenciaScreen = ({ route }) => {
         <View style={styles.cameraCard}>
           <Text style={styles.cameraTitle}>IMAGEM DA CÂMERA</Text>
           <Image
+<<<<<<< HEAD
             source={ocorrencia?.imagemUrl ? { uri: ocorrencia.imagemUrl } : DEFAULT_FIRE_IMG}
+=======
+            source={ocorrencia?.imagem_url ? { uri: ocorrencia.imagem_url } : DEFAULT_FIRE_IMG}
+>>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378
             style={styles.cameraImage}
             contentFit="cover"
           />

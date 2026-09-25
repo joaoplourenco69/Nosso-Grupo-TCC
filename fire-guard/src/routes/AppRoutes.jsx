@@ -14,7 +14,11 @@ const Stack = createNativeStackNavigator();
 
 export function AppRoutes() {
   return (
+<<<<<<< HEAD
     <NavigationContainer independent>
+=======
+    <NavigationContainer>
+>>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378
       <Stack.Navigator 
         initialRouteName="Landing"
         screenOptions={{
@@ -30,4 +34,8 @@ export function AppRoutes() {
       </Stack.Navigator>
     </NavigationContainer>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378

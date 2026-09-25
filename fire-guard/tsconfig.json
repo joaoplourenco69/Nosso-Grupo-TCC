@@ -1,7 +1,27 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
+<<<<<<< HEAD
     "moduleResolution": "bundler"
   }
 }
 
+=======
+    "strict": true,
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@/assets/*": [
+        "./assets/*"
+      ]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts"
+  ]
+}
+>>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378

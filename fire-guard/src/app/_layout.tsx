@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useColorScheme } from 'react-native';
@@ -16,3 +17,10 @@ export default function TabLayout() {
     </ThemeProvider>
   );
 }
+=======
+import { Slot } from 'expo-router';
+
+export default function Layout() {
+  return <Slot />;
+}
+>>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378
