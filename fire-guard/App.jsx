@@ -1,11 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
-import { AppRoutes } from './src/routes/AppRoutes';
-
-export default function App() {
-  return <AppRoutes />;
-}
-=======
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -37,4 +30,3 @@ export function AppRoutes() {
     </NavigationContainer>
   );
 }
->>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378

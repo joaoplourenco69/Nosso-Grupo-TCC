@@ -1,207 +1,182 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert, ActivityIndicator } from 'react-native';
-<<<<<<< HEAD
-import { COLORS } from '../constants/colors';
+import { 
+  View, 
+  Text, 
+  TextInput, 
+  TouchableOpacity, 
+  StyleSheet, 
+  SafeAreaView, 
+  ScrollView,
+  Dimensions,
+  KeyboardAvoidingView,
+  Platform
+} from 'react-native';
+import { Image } from 'expo-image';
 import { Header } from '../components/Header';
-import { signInWithEmail } from '../services/auth';
+
+const { width } = Dimensions.get('window');
+
+// Certifique-se de que o nome do arquivo corresponde ao seu brasão na pasta assets/images/
+const LOGO_CENTER = require('../../assets/images/logoCompleta.png');
 
 export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
-  const [loading, setLoading] = useState(false);
 
-  const handleLogin = async () => {
-    if (!email || !senha) {
-=======
-import { COLORS } from '../constants/theme';
-import { Header } from '../components/Header';
-
-export const LoginScreen = ({ navigation }) => {
-    const [usuario, setUsuario] = useState('');
-    const [senha, setSenha] = useState('');
-    const [loading, setLoading] = useState(false);
-
-  const handleLogin = async () => {
-    if (!usuario || !senha) {
->>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378
-      Alert.alert('Erro', 'Por favor, preencha todos os campos.');
-      return;
-    }
-
-    setLoading(true);
-
-    try {
-<<<<<<< HEAD
-      const { profile } = await signInWithEmail(email, senha);
-
-      if (!profile) {
-        Alert.alert('Perfil nao encontrado', 'Seu login existe, mas nao ha cadastro na tabela usuario.');
-        return;
-      }
-
-      navigation.reset({
-        index: 0,
-        routes: [{ name: 'ListaAlertas', params: { profile } }],
-      });
-    } catch (error) {
-      Alert.alert('Falha no login', error.message || 'E-mail ou senha invalidos.');
-=======
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      Alert.alert('Sucesso', 'Login realizado com sucesso!');
-      // navigation.navigate('Opcoes');
-    } catch (error) {
-      Alert.alert('Falha', 'Usuário ou senha inválidos.');
->>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378
-    } finally {
-      setLoading(false);
-    }
+  const handleLogin = () => {
+    // Lógica de autenticação do Supabase entrará aqui
+    console.log('Login com:', email, senha);
   };
 
   return (
-    <View style={styles.container}>
-      <Header />
-<<<<<<< HEAD
+    <SafeAreaView style={styles.safeArea}>
+      <KeyboardAvoidingView 
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={{ flex: 1 }}
+      >
+        <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+          
+          {/* 1. Cabeçalho Verde Superior com Logo */}
+          <Header />
 
-=======
-      
->>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378
-      <View style={styles.content}>
-        <Text style={styles.welcomeText}>Login do Sistema</Text>
-        <Text style={styles.instructionText}>Insira suas credenciais abaixo.</Text>
+          {/* 2. Brasão / Logo Central da Árvore */}
+          <View style={styles.logoContainer}>
+            <Image 
+              source={LOGO_CENTER} 
+              style={styles.centerLogo} 
+              contentFit="contain" 
+            />
+          </View>
 
-        <View style={styles.inputContainer}>
-<<<<<<< HEAD
-          <Text style={styles.label}>E-MAIL</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Digite seu e-mail"
-            value={email}
-            onChangeText={setEmail}
-            autoCapitalize="none"
-            keyboardType="email-address"
-=======
-          <Text style={styles.label}>USUÁRIO</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Digite seu usuário"
-            value={usuario}
-            onChangeText={setUsuario}
-            autoCapitalize="none"
->>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378
-          />
-        </View>
+          {/* 3. Card Verde Escuro de Formulário */}
+          <View style={styles.loginCard}>
+            
+            {/* Campo EMAIL */}
+            <View style={styles.inputGroup}>
+              <Text style={styles.label}>EMAIL</Text>
+              <TextInput
+                style={styles.input}
+                placeholder="Digite seu @email"
+                placeholderTextColor="#A0A0A0"
+                value={email}
+                onChangeText={setEmail}
+                keyboardType="email-address"
+                autoCapitalize="none"
+              />
+            </View>
 
-        <View style={styles.inputContainer}>
-          <Text style={styles.label}>SENHA</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Digite sua senha"
-            value={senha}
-            onChangeText={setSenha}
-<<<<<<< HEAD
-            secureTextEntry
-=======
-            secureTextEntry={true}
->>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378
-          />
-        </View>
+            {/* Campo SENHA */}
+            <View style={styles.inputGroup}>
+              <Text style={styles.label}>SENHA</Text>
+              <TextInput
+                style={styles.input}
+                placeholder="Digite sua senha"
+                placeholderTextColor="#A0A0A0"
+                value={senha}
+                onChangeText={setSenha}
+                secureTextEntry
+              />
+            </View>
 
-        <TouchableOpacity style={styles.forgotPassword}>
-          <Text style={styles.forgotPasswordText}>Esqueci minha senha</Text>
-        </TouchableOpacity>
+            {/* Botão ENVIAR */}
+            <TouchableOpacity style={styles.submitButton} onPress={handleLogin}>
+              <Text style={styles.submitButtonText}>ENVIAR</Text>
+            </TouchableOpacity>
 
-<<<<<<< HEAD
-        <TouchableOpacity style={styles.button} onPress={handleLogin} disabled={loading}>
-=======
-        <TouchableOpacity 
-          style={styles.button}
-          onPress={handleLogin}
-          disabled={loading}
-        >
->>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378
-          {loading ? (
-            <ActivityIndicator size="small" color={COLORS.white} />
-          ) : (
-            <Text style={styles.buttonText}>ENTRAR</Text>
-          )}
-        </TouchableOpacity>
-      </View>
-    </View>
+            {/* Link CRIAR CONTA */}
+            <TouchableOpacity 
+              style={styles.registerLink}
+              onPress={() => navigation?.navigate && navigation.navigate('Register')}
+            >
+              <Text style={styles.registerText}>CRIAR CONTA</Text>
+            </TouchableOpacity>
+
+          </View>
+
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  safeArea: {
     flex: 1,
-    backgroundColor: COLORS.bg,
+    backgroundColor: '#053B23', // Verde escuro do topo/fundo seguro
   },
-  content: {
-    flex: 1,
-    paddingHorizontal: 25,
-    paddingTop: 40,
+  scrollContent: {
+    flexGrow: 1,
+    backgroundColor: '#F5F2E9', // Fundo bege claro idêntico à imagem
+    alignItems: 'center',
+    paddingBottom: 30,
+  },
+  logoContainer: {
+    paddingVertical: 25,
+    alignItems: 'center',
     justifyContent: 'center',
   },
-  welcomeText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: COLORS.darkText,
-    textAlign: 'center',
-    marginBottom: 10,
+  centerLogo: {
+    width: width * 0.6,
+    height: 150,
   },
-  instructionText: {
-    fontSize: 16,
-    color: COLORS.darkText,
-    textAlign: 'center',
-    marginBottom: 40,
-    opacity: 0.8,
+  loginCard: {
+    width: width * 0.85,
+    backgroundColor: '#053B23', // Verde escuro idêntico ao protótipo
+    borderRadius: 16,
+    paddingHorizontal: 20,
+    paddingVertical: 30,
+    alignItems: 'center',
+    elevation: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
   },
-  inputContainer: {
+  inputGroup: {
     width: '100%',
     marginBottom: 20,
   },
   label: {
-    fontSize: 14,
+    color: '#FFFFFF',
+    fontSize: 12,
     fontWeight: 'bold',
-    color: COLORS.darkText,
+    letterSpacing: 1.5,
     marginBottom: 8,
-    marginLeft: 5,
+    fontFamily: 'serif',
   },
   input: {
-    width: '100%',
-    backgroundColor: COLORS.inputBg,
-    paddingVertical: 15,
-    paddingHorizontal: 20,
-    borderRadius: 25,
-    fontSize: 16,
-    borderWidth: 1,
-    borderColor: '#E0E0E0',
-    elevation: 1,
-  },
-  forgotPassword: {
-    alignSelf: 'flex-end',
-    marginBottom: 40,
-  },
-  forgotPasswordText: {
-    color: COLORS.darkText,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 12,
+    height: 48,
+    paddingHorizontal: 16,
     fontSize: 14,
-    textDecorationLine: 'underline',
+    color: '#333333',
   },
-  button: {
-    width: '100%',
-    backgroundColor: COLORS.primary,
-    paddingVertical: 15,
-    borderRadius: 25,
+  submitButton: {
+    backgroundColor: '#EAE3CD', // bege dourado suave do botão
+    width: '65%',
+    height: 44,
+    borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    elevation: 3,
+    marginTop: 10,
+    marginBottom: 25,
   },
-  buttonText: {
-    color: COLORS.white,
-    fontSize: 18,
+  submitButtonText: {
+    color: '#053B23',
+    fontSize: 15,
     fontWeight: 'bold',
+    letterSpacing: 1.5,
+    fontFamily: 'serif',
   },
-<<<<<<< HEAD
+  registerLink: {
+    padding: 5,
+  },
+  registerText: {
+    color: '#FFFFFF',
+    fontSize: 11,
+    fontWeight: 'bold',
+    letterSpacing: 1.2,
+    fontFamily: 'serif',
+  },
 });
-=======
-});
->>>>>>> 5455d1f5cb333ad00f076b0b954d332a2723a378

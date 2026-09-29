@@ -2,10 +2,10 @@ import React from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Image } from 'expo-image';
-import { COLORS } from '../constants/colors';
+import { COLORS } from '../constants/theme';
 
 const { width } = Dimensions.get('window');
-const LOGO_IMG = require('../../assets/images/NatureFoundation.png.png');
+const LOGO_IMG = require('../../assets/images/NatureFoundation.png');
 
 export function Header() {
     return (
