@@ -4,7 +4,7 @@ import time
 from ultralytics import YOLO
 
 # 1. Carrega o modelo YOLOv8 (faz o download automático na primeira vez)
-model = YOLO('fire.pt')
+model = YOLO('models/best.pt')
 print(model.names)
 
 # Configurações do servidor e da câmara
