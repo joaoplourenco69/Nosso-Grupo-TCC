@@ -1,4 +1,16 @@
 node_modules/
 fire-guard/.env
-fire-guard/.env
 .env
+
+# Regras do Python
+venv/
+.venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints
+build/
+dist/
+*.egg-info/
