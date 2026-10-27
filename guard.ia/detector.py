@@ -83,16 +83,25 @@ print("Classes do modelo:", model.names)
 
 API_BACKEND_URL = "http://localhost:3000/ia/ocorrencias"
 
-ID_EMPRESA = "80fb02b1-4048-462d-8237-b94a34839ea3"
+ID_EMPRESA = "b972f383-eef4-47e5-9137-c645077bdcd8"
 
-ID_CAMERA = "74194886-c090-4bab-ae4d-cfc84bc42834"
+ID_CAMERA = "f1dea34f-7f99-49fd-8906-dc0217055e38"
 
 
 # ==========================================
-# CÂMERA
+# CÂMERA (ÍNDICE 1 - USB COM RESOLUÇÃO HD)
 # ==========================================
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1, cv2.CAP_MSMF)
+
+# Define a resolução desejada
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+
+largura_real = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+altura_real = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+
+print(f"📷 Câmera USB iniciada na resolução: {largura_real}x{altura_real}")
 
 
 # ==========================================
@@ -157,7 +166,7 @@ while cap.isOpened():
 
 
             # Detecta somente FIRE
-            if nome_classe == "fire" and conf > 0.50:
+            if nome_classe == "fire" and conf > 0.80:
 
                 detectado = True
 
@@ -207,6 +216,9 @@ while cap.isOpened():
         tempo_atual - ULTIMO_ALERTA
         > INTERVALO_ENTRE_ALERTAS
     ):
+
+        # Atualiza o timer logo na entrada para impedir loop de requisições repetidas
+        ULTIMO_ALERTA = tempo_atual
 
         # ==================================
         # SALVA FOTO LOCAL
@@ -331,9 +343,6 @@ while cap.isOpened():
                     print(
                         res.text
                     )
-
-
-                ULTIMO_ALERTA = tempo_atual
 
 
             except Exception as erro:
